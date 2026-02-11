@@ -13,6 +13,8 @@ make install # Copy Shy.app to /Applications/
 
 No Xcode project or Swift Package Manager — the app compiles directly with `swiftc` via the Makefile. Target is `arm64-apple-macosx26.0` (macOS Tahoe only). There are no tests or linter configured.
 
+Always kill, rebuild and reopen the app after making changes to the code.
+
 ## Architecture
 
 Shy is a minimal macOS menu bar app that toggles the system "auto-hide menu bar" setting. It runs as an LSUIElement (no Dock icon, no windows).

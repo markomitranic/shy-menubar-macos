@@ -9,7 +9,7 @@ SOURCES = $(wildcard Sources/*.swift)
 TARGET = arm64-apple-macosx26.0
 SWIFT_FLAGS = -O -whole-module-optimization -target $(TARGET)
 
-.PHONY: all run clean install
+.PHONY: all run clean install package
 
 all: $(BINARY) $(CONTENTS_DIR)/Info.plist
 
@@ -33,3 +33,6 @@ clean:
 
 install: all
 	cp -r $(APP_BUNDLE) /Applications/
+
+package: all
+	cd $(BUILD_DIR) && zip -r $(APP_NAME).zip $(APP_NAME).app
