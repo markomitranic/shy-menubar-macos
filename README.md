@@ -4,6 +4,8 @@ A minimal macOS menu bar utility that toggles the system's "auto-hide menu bar" 
 
 macOS Tahoe (26.x) only.
 
+![Screenshot](Screenshot%202026-02-11%20at%2017.01.51.png)
+
 ## Build
 
 ```
