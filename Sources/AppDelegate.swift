@@ -1,4 +1,5 @@
 import AppKit
+import ServiceManagement
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
@@ -37,6 +38,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func showContextMenu() {
         let menu = NSMenu()
+
+        let loginItem = NSMenuItem(
+            title: "Open at Login", action: #selector(toggleOpenAtLogin(_:)),
+            keyEquivalent: "")
+        loginItem.target = self
+        loginItem.state = SMAppService.mainApp.status == .enabled ? .on : .off
+        menu.addItem(loginItem)
+
+        menu.addItem(NSMenuItem.separator())
         menu.addItem(
             NSMenuItem(
                 title: "Quit Shy", action: #selector(NSApplication.terminate(_:)),
@@ -47,6 +57,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         DispatchQueue.main.async { [weak self] in
             self?.statusItem.menu = nil
+        }
+    }
+
+    @objc private func toggleOpenAtLogin(_ sender: NSMenuItem) {
+        let service = SMAppService.mainApp
+        do {
+            if service.status == .enabled {
+                try service.unregister()
+            } else {
+                try service.register()
+            }
+        } catch {
+            // silently ignore
         }
     }
 
