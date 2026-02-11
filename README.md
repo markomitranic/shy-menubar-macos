@@ -1,6 +1,6 @@
 # Shy
 
-A minimal macOS menu bar utility that toggles the system's "auto-hide menu bar" setting. Left-click the eye icon to toggle, right-click to quit. No dock icon, no windows, no settings.
+A minimal macOS menu bar utility that toggles the system's "auto-hide menu bar" setting. Left-click the shy piggy to toggle, right-click to quit. No dock icon, no windows, no settings.
 
 macOS Tahoe (26.x) only.
 
